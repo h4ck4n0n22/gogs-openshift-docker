@@ -280,7 +280,7 @@ objects:
       RUN_USER = gogs
 
       [database]
-      DB_TYPE  = postgres
+      TYPE     = postgres
       HOST     = ${APPLICATION_NAME}-postgresql:5432
       NAME     = ${DATABASE_NAME}
       USER     = ${DATABASE_USER}
@@ -290,8 +290,10 @@ objects:
       ROOT = /opt/gogs/data/repositories
 
       [server]
-      ROOT_URL=http://${HOSTNAME}
-      SSH_DOMAIN=${HOSTNAME}
+      EXTERNAL_URL = http://${HOSTNAME}
+      SSH_DOMAIN = ${HOSTNAME}
+      START_SSH_SERVER = true
+      SSH_LISTEN_PORT = 2222
 
       [security]
       INSTALL_LOCK = ${INSTALL_LOCK}
