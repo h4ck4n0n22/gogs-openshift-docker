@@ -1,8 +1,8 @@
-FROM centos:7
+FROM quay.io/centos/centos:stream8
 
-MAINTAINER Javier León Peris <javierleonperis@gmail.com>
+MAINTAINER M J Awesome <h4ck4n0n22@icloud.com>
 
-ARG GOGS_VERSION="0.12.3"
+ARG GOGS_VERSION="0.12.10"
 
 LABEL name="Gogs - Go Git Service" \
       vendor="Gogs" \
@@ -11,7 +11,7 @@ LABEL name="Gogs - Go Git Service" \
       summary="The goal of this project is to make the easiest, fastest, and most painless way of setting up a self-hosted Git service." \
       io.openshift.expose-services="3000,gogs" \
       io.openshift.tags="gogs" \
-      build-date="2017-04-02" \
+      build-date="2022-18-10" \
       version="${GOGS_VERSION}" \
       release="1"
 
@@ -19,7 +19,7 @@ ENV HOME=/var/lib/gogs
 
 COPY ./root /
 
-RUN curl -L -o /etc/yum.repos.d/gogs.repo https://dl.packager.io/srv/gogs/gogs/main/installer/el/7.repo && \
+RUN curl -L -o /etc/yum.repos.d/gogs.repo https://dl.packager.io/srv/gogs/gogs/main/installer/el/8.repo && \
     yum -y install epel-release && \
     yum -y update 
 
