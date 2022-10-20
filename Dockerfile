@@ -22,6 +22,8 @@ COPY ./root /
 RUN curl -L -o /etc/yum.repos.d/gogs.repo https://dl.packager.io/srv/gogs/gogs/main/installer/el/8.repo && \
     yum -y install epel-release && \
     yum -y update 
+    
+RUN yum search gogs
 
 RUN yum -y --setopt=tsflags=nodocs install gogs-${GOGS_VERSION} nss_wrapper gettext && \
     yum -y clean all && \
